@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "RadarMotuExpo",
+    "slug": "RadarMotuExpo",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/radarmotu-icon.png",
+    "scheme": "radarmotuexpo",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1A1D21"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.arthur.radarmotuexpo", 
+      "infoPlist": {
+        "NSCameraUsageDescription": "O app Radar Motu precisa de acesso à sua câmera para tirar fotos de placas.",
+        "NSPhotoLibraryUsageDescription": "O app Radar Motu precisa de acesso à sua galeria para selecionar fotos de placas."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/radarmotu-adaptive-foreground.png",
+        "backgroundColor": "#1A1D21"
+      },
+      "package": "com.arthur.radarmotuexpo", 
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE"
+       
+      ]
+    },
+    "web": {
+      "favicon": "./assets/seu-radarmotu-favicon.png"
+    },
+    "plugins": [
+  
+    ],
+    "assetBundlePatterns": [
+      "assets/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5b16e03a-90d7-4254-9269-7db018a49b8b" 
+      }
+    }
+  }
+}
