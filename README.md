@@ -71,6 +71,7 @@ RadarMotuExpo/
   package.json                        // Dependências e scripts do projeto
   README.md                           // Este arquivo de explicação
   tsconfig.json                       // Configuração do TypeScript
+```
 
 ## 🚀 Como Rodar o Projeto
 
