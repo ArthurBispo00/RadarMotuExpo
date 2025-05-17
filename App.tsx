@@ -7,24 +7,24 @@ import {
     createDrawerNavigator,
     DrawerContentScrollView,
     DrawerItemList,
-    DrawerNavigationOptions // Importado para tipar screenOptions
+    DrawerNavigationOptions 
 } from '@react-navigation/drawer';
 
-// Importe suas telas
+// Importação das telas
 import Cadastro from './screens/Cadastro';
 import Listagem from './screens/Listagem';
 import HomeScreen from './screens/HomeScreen';
 import MapaScreen from './screens/MapaScreen';
 import SobreNosScreen from './screens/SobreNosScreen';
 
-// Cores principais
+// Cores padrão da RadarMotu
 const radarMotuGreen = '#22DD44';
 const darkBackground = '#1A1D21';
 const textColorLight = '#FFFFFF';
 const inactiveColor = '#A0A0A0';
-const metamindTextColor = '#B0B0B0'; // Uma cor sutil para o texto da Metamind
+const metamindTextColor = '#B0B0B0';
 
-// Tipos para as rotas do Drawer
+// rotas para o Drawer
 export type DrawerParamList = {
   Home: undefined;
   CadastrarVeiculo: undefined;
@@ -77,7 +77,7 @@ function CustomDrawerContent(props: any) {
 }
 
 // Opções de tela padrão para todas as telas do Drawer
-const globalScreenOptions: DrawerNavigationOptions = { // Tipagem adicionada
+const globalScreenOptions: DrawerNavigationOptions = { 
     headerStyle: {
       backgroundColor: darkBackground,
     },
@@ -87,7 +87,7 @@ const globalScreenOptions: DrawerNavigationOptions = { // Tipagem adicionada
     },
     drawerStyle: {
       backgroundColor: darkBackground,
-      width: 280, // Aumentei um pouco a largura do Drawer
+      width: 280, 
     },
   };
 
@@ -106,7 +106,7 @@ export default function App() {
       <Drawer.Navigator
         initialRouteName="Home"
         drawerContent={(props) => <CustomDrawerContent {...props} />}
-        screenOptions={globalScreenOptions} // Aplicando as opções globais
+        screenOptions={globalScreenOptions} 
       >
         <Drawer.Screen
           name="Home"
@@ -140,15 +140,15 @@ export default function App() {
 
 const styles = StyleSheet.create({
   drawerHeader: {
-    backgroundColor: darkBackground, // Ou um tom um pouco diferente para o header
-    paddingVertical: 25, // Aumentei o padding vertical
+    backgroundColor: darkBackground,
+    paddingVertical: 25, 
     paddingHorizontal: 20,
     alignItems: 'center',
 
   },
   drawerLogo: {
-    width: 120, // Ajuste conforme o logo RadarMotu
-    height: 60, // Ajuste
+    width: 120, 
+    height: 60, 
     resizeMode: 'contain',
   },
 
@@ -157,12 +157,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'center',
     borderTopWidth: 1,
-    borderTopColor: '#333333', // Linha sutil para separar do conteúdo
-    backgroundColor: darkBackground, // Garante que o fundo seja o mesmo
+    borderTopColor: '#333333', 
+    backgroundColor: darkBackground, 
   },
   drawerFooterLogo: {
-    width: 100, // Ajuste para o tamanho do logo Metamind
-    height: 30, // Ajuste
+    width: 100, 
+    height: 30, 
     resizeMode: 'contain',
     marginBottom: 8,
   },
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   drawerFooterRightsText: {
-    color: '#777', // Cor mais sutil para os direitos reservados
+    color: '#777',
     fontSize: 10,
     textAlign: 'center',
     marginTop: 4,

@@ -3,15 +3,15 @@ import React, { useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { DrawerParamList } from '../App'; // Certifique-se que está exportado do App.tsx
+import { DrawerParamList } from '../App'; 
 
-// Cores
+// Cores tema do Projeto
 const radarMotuGreen = '#22DD44';
-const screenDarkBackground = '#1A1D21';      // Fundo principal da tela
-const headerFooterScreenColor = '#202328'; // <<-- COR ATUALIZADA AQUI: Cinza escuro (mais claro que antes)
+const screenDarkBackground = '#1A1D21';      
+const headerFooterScreenColor = '#202328'; 
 const textColorLight = '#FFFFFF';
 const buttonTextColor = '#FFFFFF';
-const footerTextColor = '#999999'; // Ajustei para um cinza um pouco mais claro no rodapé
+const footerTextColor = '#999999'; 
 
 type HomeScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'Home'>;
 
@@ -22,11 +22,11 @@ export default function HomeScreen() {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: headerFooterScreenColor, // Cor escura atualizada para o header da tela
+        backgroundColor: headerFooterScreenColor,
       },
       headerTintColor: textColorLight,
     });
-  }, [navigation, headerFooterScreenColor, textColorLight]); // Adicionadas dependências ao useEffect
+  }, [navigation, headerFooterScreenColor, textColorLight]); 
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -105,11 +105,11 @@ const styles = StyleSheet.create({
   screenFooter: {
     paddingVertical: 15,
     paddingHorizontal: 20,
-    backgroundColor: headerFooterScreenColor, // Cor escura atualizada para o rodapé da tela
+    backgroundColor: headerFooterScreenColor, 
     alignItems: 'center',
     justifyContent: 'center',
     borderTopWidth: 1,
-    borderTopColor: '#303338', // Ajustei a cor da borda para o novo tom de fundo
+    borderTopColor: '#303338', 
   },
   screenFooterText: {
     fontSize: 12,

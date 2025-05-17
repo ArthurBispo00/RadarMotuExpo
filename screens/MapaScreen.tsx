@@ -3,10 +3,10 @@ import React, { useState, useLayoutEffect } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { DrawerParamList } from '../App'; // Certifique-se que está exportado
+import { DrawerParamList } from '../App'; 
 import Svg, { Rect, G, Circle, Text as SvgText, Path } from 'react-native-svg';
 
-// Cores do tema
+// Cores tematico da aplicação
 const screenDarkBackground = '#1A1D21';
 const headerScreenColor = '#202328';
 const textColorLight = '#FFFFFF';
@@ -37,10 +37,10 @@ const initialMapData = {
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const HEADER_ESTIMATED_HEIGHT = 60;
 const TITLE_ESTIMATED_HEIGHT = 50;
-// Ajustar a altura dos controles com base em 2 linhas de botões + botão de reset
-const CONTROLS_ROW_HEIGHT = 60; // Altura estimada para uma linha de botões + margens
-const CONTROLS_ESTIMATED_HEIGHT = CONTROLS_ROW_HEIGHT * 2 + 30; // 2 linhas + espaço para reset
-const SVG_CONTAINER_HEIGHT = Dimensions.get('window').height - HEADER_ESTIMATED_HEIGHT - TITLE_ESTIMATED_HEIGHT - CONTROLS_ESTIMATED_HEIGHT - 20; // Padding extra
+
+const CONTROLS_ROW_HEIGHT = 60; 
+const CONTROLS_ESTIMATED_HEIGHT = CONTROLS_ROW_HEIGHT * 2 + 30;
+const SVG_CONTAINER_HEIGHT = Dimensions.get('window').height - HEADER_ESTIMATED_HEIGHT - TITLE_ESTIMATED_HEIGHT - CONTROLS_ESTIMATED_HEIGHT - 20; 
 
 type MapaScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'MapaDoPatio'>;
 
@@ -123,7 +123,7 @@ export default function MapaScreen() {
           </Svg>
         </View>
 
-        {/* Controles com layout ajustado */}
+        {/* Controles com layout*/}
         <View style={styles.controlsOuterContainer}>
           <View style={styles.controlsRow}>
             <TouchableOpacity style={styles.controlButton} onPress={handleZoomIn}><Text style={styles.controlText}>Zoom +</Text></TouchableOpacity>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 5,
     paddingTop: 10,
-    paddingBottom: 10, // Reduzido, pois o controlsOuterContainer terá sua própria margem
+    paddingBottom: 10, 
   },
   title: {
     fontSize: 22,
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 10,
   },
-  // Novo container para todas as linhas de controles
+
   controlsOuterContainer: {
     width: '90%', // Controla a largura total da área de botões
     alignItems: 'center', // Centraliza as linhas de botões
@@ -178,26 +178,26 @@ const styles = StyleSheet.create({
   },
   controlsRow: {
     flexDirection: 'row',
-    justifyContent: 'center', // Ou 'center' se preferir
+    justifyContent: 'center', 
     alignItems: 'center',
-    width: '100%', // Linha ocupa toda a largura do controlsOuterContainer
+    width: '100%',
     marginBottom: 8, // Espaço entre as linhas de botões
   },
   controlButton: {
     backgroundColor: radarMotuGreen,
     paddingVertical: 10,
-    paddingHorizontal: 10, // Ajustado para caber melhor os textos/setas
-    minWidth: 55, // Largura mínima para botões de seta/zoom
-    height: 45, // Altura fixa para alinhar
+    paddingHorizontal: 10, 
+    minWidth: 55, 
+    height: 45, 
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 8,
-    marginHorizontal: 3, // Espaço horizontal entre botões na mesma linha
+    marginHorizontal: 3,
   },
-  controlButtonWide: { // Para o botão de Resetar
+  controlButtonWide: {
     backgroundColor: itemBorderColor,
-    paddingHorizontal: 20, // Mais padding para o texto maior
-    // minWidth não é necessário se ele for o único na linha ou se ajusta bem
+    paddingHorizontal: 20, 
+    
   },
   controlText: {
     color: textColorLight,

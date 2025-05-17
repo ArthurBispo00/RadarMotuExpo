@@ -1,5 +1,5 @@
 // /screens/Cadastro.tsx
-import React, { useState, useLayoutEffect } from 'react'; // Adicionado useLayoutEffect
+import React, { useState, useLayoutEffect } from 'react'; 
 import {
   View,
   Text,
@@ -7,26 +7,27 @@ import {
   StyleSheet,
   Alert,
   ScrollView,
-  TouchableOpacity, // Adicionado para botões estilizados
+  TouchableOpacity, 
   Platform
-} from 'react-native';
+} 
+
+from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerNavigationProp } from '@react-navigation/drawer'; // Para navegação do Drawer
-import { DrawerParamList } from '../App'; // Importa a lista de parâmetros do Drawer
+import { DrawerNavigationProp } from '@react-navigation/drawer'; 
+import { DrawerParamList } from '../App'; 
 import PlacaRecognition from './PlacaRecognition';
 
-// Cores do tema (idealmente, viriam de um arquivo de constantes/tema)
+// Cores da Aplicação
 const radarMotuGreen = '#22DD44';
 const screenDarkBackground = '#1A1D21';
-const headerScreenColor = '#202328'; // Cor para o header da tela (igual da HomeScreen)
+const headerScreenColor = '#202328'; 
 const textColorLight = '#FFFFFF';
-const placeholderTextColor = '#A0A0A0'; // Cor para placeholders dos inputs
-const inputBackgroundColor = '#2C2F33'; // Fundo para os inputs
-const inputBorderColor = '#4F545C'; // Borda sutil para os inputs
+const placeholderTextColor = '#A0A0A0'; 
+const inputBackgroundColor = '#2C2F33'; 
+const inputBorderColor = '#4F545C'; 
 const buttonTextColor = '#FFFFFF';
 
-// Tipagem correta para a navegação a partir desta tela dentro de um Drawer
 type CadastroScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'CadastrarVeiculo'>;
 
 export default function CadastroVeiculo() {
@@ -49,7 +50,7 @@ export default function CadastroVeiculo() {
     });
   }, [navigation]);
 
-  async function salvarVeiculo() { // Renomeado para Veiculo para consistência com o nome do componente
+  async function salvarVeiculo() { 
     if (!placa || !marca || !modelo || !cor || !anoFabricacao || !anoModelo || !chassi) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
       return;
@@ -62,7 +63,7 @@ export default function CadastroVeiculo() {
     const novoVeiculo = { placa, marca, modelo, cor, anoFabricacao, anoModelo, chassi };
 
     try {
-      const veiculosSalvos = await AsyncStorage.getItem('@lista_veiculos'); // Chave genérica
+      const veiculosSalvos = await AsyncStorage.getItem('@lista_veiculos'); 
       const listaVeiculos = veiculosSalvos ? JSON.parse(veiculosSalvos) : [];
       listaVeiculos.push(novoVeiculo);
       await AsyncStorage.setItem('@lista_veiculos', JSON.stringify(listaVeiculos));
@@ -76,12 +77,11 @@ export default function CadastroVeiculo() {
   }
 
   function irParaListagem() {
-    // Navega para a rota definida no Drawer Navigator em App.tsx
     navigation.navigate('ListarVeiculos'); 
   }
 
   const handlePlacaRecognized = (placaReconhecida: string) => {
-    // Validação de placa (Mercosul e antiga) - ajuste a regex conforme necessidade
+    // Validação de placa (Mercosul e antiga)
     const placaRegex = /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/i; 
     if (placaReconhecida && placaRegex.test(placaReconhecida)) {
       setPlaca(placaReconhecida.toUpperCase());
@@ -94,7 +94,7 @@ export default function CadastroVeiculo() {
   return (
     <ScrollView 
         contentContainerStyle={styles.container}
-        keyboardShouldPersistTaps="handled" // Ajuda com o fechamento do teclado ao tocar fora
+        keyboardShouldPersistTaps="handled"
     >
       <Text style={styles.label}>Placa</Text>
       <TextInput 
@@ -185,49 +185,49 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     padding: 20,
-    backgroundColor: screenDarkBackground, // Fundo escuro
+    backgroundColor: screenDarkBackground, 
   },
   label: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: textColorLight, // Texto claro para labels
+    color: textColorLight, 
     marginBottom: 8,
     marginTop: 10,
   },
   input: {
-    backgroundColor: inputBackgroundColor, // Fundo do input
-    color: textColorLight, // Cor do texto digitado
+    backgroundColor: inputBackgroundColor, 
+    color: textColorLight, 
     borderWidth: 1,
-    borderColor: inputBorderColor, // Borda sutil
+    borderColor: inputBorderColor, 
     paddingHorizontal: 15,
-    paddingVertical: Platform.OS === 'ios' ? 15 : 10, // Ajuste de padding para iOS/Android
+    paddingVertical: Platform.OS === 'ios' ? 15 : 10, 
     marginBottom: 15,
-    borderRadius: 8, // Bordas arredondadas
+    borderRadius: 8, 
     fontSize: 16,
   },
   placaRecognitionContainer: {
-    marginVertical: 20, // Espaçamento para o componente de OCR
+    marginVertical: 20, 
     alignItems: 'center',
   },
   button: {
-    backgroundColor: radarMotuGreen, // Cor verde para o botão primário
+    backgroundColor: radarMotuGreen, 
     paddingVertical: 15,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 20, // Espaçamento antes do botão
+    marginTop: 20, 
     marginBottom: 10,
   },
   buttonText: {
-    color: buttonTextColor, // Texto claro para o botão
+    color: buttonTextColor, 
     fontSize: 16,
     fontWeight: 'bold',
   },
   secondaryButton: {
-    backgroundColor: 'transparent', // Fundo transparente para botão secundário
-    borderColor: radarMotuGreen, // Borda verde
+    backgroundColor: 'transparent', 
+    borderColor: radarMotuGreen, 
     borderWidth: 2,
   },
   secondaryButtonText: {
-    color: radarMotuGreen, // Texto verde para botão secundário
+    color: radarMotuGreen, 
   },
 });

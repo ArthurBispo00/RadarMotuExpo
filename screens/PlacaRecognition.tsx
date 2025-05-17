@@ -7,14 +7,14 @@ import {
   StyleSheet,
   TouchableOpacity,
   Alert,
-  ActivityIndicator // Adicionado para feedback de loading
+  ActivityIndicator 
 } from 'react-native';
-import * as ImagePicker from 'expo-image-picker'; // Import do Expo Image Picker
+import * as ImagePicker from 'expo-image-picker'; 
 
-// Cores do tema (para consistência, idealmente viriam de um arquivo central)
+// Cores da Aplicação
 const radarMotuGreen = '#22DD44';
 const textColorLight = '#FFFFFF';
-const screenDarkBackground = '#1A1D21'; // Ou a cor de fundo da tela onde ele será usado
+const screenDarkBackground = '#1A1D21'; 
 const labelColor = '#A0A0A0';
 const inputBorderColor = '#4F545C';
 
@@ -27,7 +27,8 @@ export default function PlacaRecognition({ onPlacaRecognized }: PlacaRecognition
   const [isLoading, setIsLoading] = useState<boolean>(false); // Para o loading da API
   const [isPickingImage, setIsPickingImage] = useState<boolean>(false); // Para o loading do image picker
 
-  // TODO: Mover para .env no futuro
+  /*URL da API desenvolvida neste repositório https://github.com/ArthurBispo00/servidor_OCR está rodando via NUVEM
+  utilizando a VM do Free do Linux da Azure DevOps*/
   const apiUrl = 'http://191.234.177.200:3000/upload'; 
 
   const selectImage = async (useCamera: boolean) => {
@@ -35,9 +36,9 @@ export default function PlacaRecognition({ onPlacaRecognized }: PlacaRecognition
     let result;
     const options: ImagePicker.ImagePickerOptions = {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: false, // Pode mudar para true se quiser edição básica
-      // aspect: [4, 3], // Opcional: força uma proporção
-      quality: 0.7,   // Qualidade da imagem de 0 a 1
+      allowsEditing: false, 
+      
+      quality: 0.7,   
     };
 
     try {
@@ -62,7 +63,7 @@ export default function PlacaRecognition({ onPlacaRecognized }: PlacaRecognition
       if (!result.canceled && result.assets && result.assets.length > 0) {
         const asset = result.assets[0];
         setImagemPlaca(asset.uri);
-        // O nome do arquivo pode não ser robusto ou sempre disponível
+        
         const fileName = asset.fileName || asset.uri.split('/').pop() || `image_${Date.now()}.jpg`;
         recognizeTextFromImage(asset.uri, fileName);
       }
@@ -105,15 +106,14 @@ export default function PlacaRecognition({ onPlacaRecognized }: PlacaRecognition
       const apiResponse = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
-        // FormData define o Content-Type, mas se houver problemas, pode tentar adicionar:
-        // headers: { 'Content-Type': 'multipart/form-data' },
+      
       });
 
       if (!apiResponse.ok) {
         let errorMsg = `Erro do servidor: ${apiResponse.status}`;
         try {
           const errorData = await apiResponse.json();
-          errorMsg = errorData.error || errorData.message || errorMsg; // Ajustado para 'message'
+          errorMsg = errorData.error || errorData.message || errorMsg;
         } catch (e) {
           const textError = await apiResponse.text();
           errorMsg = textError || errorMsg;
@@ -125,7 +125,7 @@ export default function PlacaRecognition({ onPlacaRecognized }: PlacaRecognition
       if (responseData.placa) {
         onPlacaRecognized(responseData.placa);
       } else {
-        // Ajustado para 'message' vindo do seu exemplo de Cadastro.tsx
+       
         onPlacaRecognized(responseData.message || responseData.mensagem || 'Placa não reconhecida pelo servidor');
       }
     } catch (error: any) {
@@ -172,8 +172,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     width: '100%',
-    paddingVertical: 10, // Adicionado padding vertical
-    // backgroundColor: screenDarkBackground, // Removido para herdar da tela pai (Cadastro.tsx)
+    paddingVertical: 10, 
   },
   styledButton: {
     backgroundColor: radarMotuGreen, // Cor RadarMotu
@@ -185,13 +184,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-    minWidth: '70%', // Ajuste conforme necessário
+    minWidth: '70%', 
     alignItems: 'center',
-    justifyContent: 'center', // Para o ActivityIndicator
-    height: 48, // Altura fixa para o botão
+    justifyContent: 'center', 
+    height: 48, 
   },
   buttonText: {
-    color: textColorLight, // Cor do texto do botão
+    color: textColorLight, 
     fontSize: 16,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -205,7 +204,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     alignItems: 'center',
     justifyContent: 'center',
-    zIndex: 10, // Para ficar por cima
+    zIndex: 10, 
   },
   loadingText: {
     marginTop: 10,
@@ -214,20 +213,20 @@ const styles = StyleSheet.create({
   },
   imagePreviewContainer: {
     alignItems: 'center',
-    marginTop: 20, // Aumentei a margem
+    marginTop: 20, 
     marginBottom: 10,
   },
   previewLabel: {
     fontSize: 14,
-    color: labelColor, // Cor do label
+    color: labelColor, 
     marginBottom: 8,
   },
   image: {
-    width: 280, // Ajuste conforme necessário
-    height: 180, // Ajuste
+    width: 280,
+    height: 180, 
     resizeMode: 'contain',
     borderWidth: 1,
-    borderColor: inputBorderColor, // Cor da borda da imagem
+    borderColor: inputBorderColor,
     borderRadius: 8,
   },
 });

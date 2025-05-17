@@ -1,26 +1,26 @@
 // /screens/Listagem.tsx
-import React, { useEffect, useState, useLayoutEffect } from 'react'; // Adicionado useLayoutEffect
+import React, { useEffect, useState, useLayoutEffect } from 'react'; 
 import {
   StyleSheet,
   Text,
   View,
   FlatList,
-  TouchableOpacity, // Adicionado para o botão estilizado
-  ActivityIndicator // Para feedback de carregamento
+  TouchableOpacity, 
+  ActivityIndicator 
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation, useFocusEffect } from '@react-navigation/native'; // Adicionado useFocusEffect
-import { DrawerNavigationProp } from '@react-navigation/drawer'; // Para navegação do Drawer
-import { DrawerParamList } from '../App'; // Importa a lista de parâmetros do Drawer
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { DrawerNavigationProp } from '@react-navigation/drawer'; 
+import { DrawerParamList } from '../App'; 
 
-// Cores do tema
+// Cores do tema da Aplicação
 const radarMotuGreen = '#22DD44';
 const screenDarkBackground = '#1A1D21';
 const headerScreenColor = '#202328';
 const textColorLight = '#FFFFFF';
-const itemBackgroundColor = '#2C2F33'; // Fundo para os itens da lista
-const itemTextColor = '#E0E0E0';       // Cor do texto nos itens
-const itemTitleColor = '#FFFFFF';      // Cor do título de cada item
+const itemBackgroundColor = '#2C2F33'; 
+const itemTextColor = '#E0E0E0';       
+const itemTitleColor = '#FFFFFF';      
 const buttonTextColor = '#FFFFFF';
 
 // Interface para os veículos (consistente com Cadastro.tsx)
@@ -34,13 +34,13 @@ interface Veiculo {
   chassi: string;
 }
 
-// Tipagem correta para a navegação
+
 type ListagemScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'ListarVeiculos'>;
 
 export default function Listagem() {
   const navigation = useNavigation<ListagemScreenNavigationProp>();
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // Estado para feedback de carregamento
+  const [isLoading, setIsLoading] = useState(true);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -51,7 +51,7 @@ export default function Listagem() {
     });
   }, [navigation]);
 
-  // useFocusEffect para recarregar os dados sempre que a tela ganhar foco
+  
   useFocusEffect(
     React.useCallback(() => {
       carregarVeiculos();
@@ -61,12 +61,12 @@ export default function Listagem() {
   async function carregarVeiculos() {
     setIsLoading(true);
     try {
-      const listaVeiculosJson = await AsyncStorage.getItem('@lista_veiculos'); // Usando a mesma chave de Cadastro.tsx
+      const listaVeiculosJson = await AsyncStorage.getItem('@lista_veiculos'); 
       const listaVeiculos = listaVeiculosJson ? JSON.parse(listaVeiculosJson) : [];
       setVeiculos(listaVeiculos);
     } catch (error) {
       console.error('Erro ao carregar os veículos:', error);
-      // Adicionar um Alert aqui pode ser útil para o usuário
+      // Adicionado um Alert
       // Alert.alert("Erro", "Não foi possível carregar a lista de veículos.");
     } finally {
       setIsLoading(false);
@@ -97,7 +97,7 @@ export default function Listagem() {
       <Text style={styles.heading}>Veículos Cadastrados</Text>
       <FlatList
         data={veiculos}
-        keyExtractor={(item, index) => item.placa + index} // Chave mais robusta
+        keyExtractor={(item, index) => item.placa + index} 
         renderItem={renderItem}
         contentContainerStyle={styles.listContentContainer}
         ListEmptyComponent={
@@ -109,7 +109,7 @@ export default function Listagem() {
       />
       <TouchableOpacity
         style={[styles.button, styles.secondaryButton]}
-        onPress={() => navigation.navigate('CadastrarVeiculo')} // Rota correta do Drawer
+        onPress={() => navigation.navigate('CadastrarVeiculo')} 
       >
         <Text style={[styles.buttonText, styles.secondaryButtonText]}>Cadastrar Novo Veículo</Text>
       </TouchableOpacity>
@@ -120,7 +120,7 @@ export default function Listagem() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 15, // Ajuste de padding
+    paddingHorizontal: 15, 
     paddingTop: 20,
     paddingBottom: 10,
     backgroundColor: screenDarkBackground,
@@ -135,21 +135,21 @@ const styles = StyleSheet.create({
     color: textColorLight,
   },
   heading: {
-    fontSize: 24, // Aumentei um pouco
+    fontSize: 24, 
     fontWeight: 'bold',
     color: textColorLight,
-    marginBottom: 20, // Aumentei a margem
+    marginBottom: 20, 
     textAlign: 'center',
   },
   listContentContainer: {
-    paddingBottom: 10, // Espaço no final da lista
+    paddingBottom: 10, 
   },
   itemContainer: {
     backgroundColor: itemBackgroundColor,
-    padding: 18, // Aumentei o padding
-    borderRadius: 10, // Bordas mais arredondadas
-    marginBottom: 12, // Aumentei a margem
-    shadowColor: '#000', // Sombra para dar profundidade
+    padding: 18, 
+    borderRadius: 10, 
+    marginBottom: 12, 
+    shadowColor: '#000', 
     shadowOffset: {
       width: 0,
       height: 2,
@@ -162,12 +162,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: itemTitleColor,
-    marginBottom: 8, // Aumentei a margem
+    marginBottom: 8, 
   },
   itemText: {
-    fontSize: 15, // Aumentei um pouco
+    fontSize: 15, 
     color: itemTextColor,
-    lineHeight: 22, // Melhor espaçamento entre linhas
+    lineHeight: 22, 
     marginBottom: 3,
   },
   emptyListComponent: {

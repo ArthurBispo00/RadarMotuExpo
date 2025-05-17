@@ -1,17 +1,17 @@
 // /screens/SobreNosScreen.tsx
 import React, { useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native'; // Adicionado Image e ScrollView
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { DrawerNavigationProp } from '@react-navigation/drawer';
-import { DrawerParamList } from '../App'; // Certifique-se que está exportado
+import { DrawerParamList } from '../App';
 
-// Cores do tema
+// Cores padrão da Aplicação
 const screenDarkBackground = '#1A1D21';
 const headerScreenColor = '#202328';
 const textColorLight = '#FFFFFF';
-const labelColor = '#A0A0A0'; // Ou radarMotuGreen para mais destaque
+const labelColor = '#A0A0A0'; 
 const versionColor = '#777777';
-const radarMotuGreen = '#22DD44'; // Para destaque nos nomes, opcional
+const radarMotuGreen = '#22DD44'; 
 
 type SobreNosScreenNavigationProp = DrawerNavigationProp<DrawerParamList, 'Sobre'>;
 
@@ -45,27 +45,27 @@ export default function SobreNosScreen() {
           {/* Integrante 1 */}
           <View style={styles.integranteBox}>
             <Image 
-              source={require('../assets/integrante1.png')} // ATUALIZE COM O NOME DA SUA IMAGEM
+              source={require('../assets/integrante1.png')} 
               style={styles.integranteImage} 
             />
             <Text style={styles.integranteNome}>[Arthur Bispo de Lima]</Text>
             <Text style={styles.integranteRM}>RM: [557568]</Text>
           </View>
 
-          {/* Integrante 2 - Descomente e atualize se houver */}
+          {/* Integrante 2 */}
           <View style={styles.integranteBox}>
             <Image 
-              source={require('../assets/integrante2.png')} // ATUALIZE COM O NOME DA SUA IMAGEM
+              source={require('../assets/integrante2.png')} 
               style={styles.integranteImage} 
             />
             <Text style={styles.integranteNome}>[João Paulo Moreira dos Santos]</Text>
             <Text style={styles.integranteRM}>RM: [557808]</Text>
           </View>
 
-          {/* Integrante 3 - Descomente e atualize se houver */}
+          {/* Integrante 3 */}
           <View style={styles.integranteBox}>
             <Image 
-              source={require('../assets/integrante3.png')} // ATUALIZE COM O NOME DA SUA IMAGEM
+              source={require('../assets/integrante3.png')} 
               style={styles.integranteImage} 
             />
             <Text style={styles.integranteNome}>[Paulo André Carminati]</Text>
@@ -87,21 +87,21 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 25, // Aumentei o padding geral
+    padding: 25, 
     alignItems: 'center',
-    justifyContent: 'center', // Centraliza o conteúdo se for menor que a tela
+    justifyContent: 'center', 
   },
   mainTitle: {
-    fontSize: 26, // Aumentei
+    fontSize: 26, 
     fontWeight: 'bold',
     color: textColorLight,
-    marginBottom: 25, // Aumentei
+    marginBottom: 25, 
     textAlign: 'center',
   },
   sectionTitle: {
-    fontSize: 20, // Novo título de seção
+    fontSize: 20,
     fontWeight: 'bold',
-    color: radarMotuGreen, // Destaque com o verde
+    color: radarMotuGreen,
     marginTop: 30,
     marginBottom: 20,
     textAlign: 'center',
@@ -109,30 +109,30 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     textAlign: 'center',
-    marginBottom: 15, // Aumentei
-    color: labelColor, // Usando labelColor para texto descritivo
-    lineHeight: 24, // Melhor legibilidade
+    marginBottom: 15,
+    color: labelColor,
+    lineHeight: 24, 
   },
   integrantesContainer: {
-    flexDirection: 'row', // Imagens lado a lado
-    justifyContent: 'space-around', // Espaça igualmente
-    width: '100%', // Ocupa toda a largura
+    flexDirection: 'row', 
+    justifyContent: 'space-around', 
+    width: '100%', 
     marginBottom: 30,
-    flexWrap: 'wrap', // Permite quebrar a linha se não couber
+    flexWrap: 'wrap', 
   },
   integranteBox: {
     alignItems: 'center',
-    marginBottom: 20, // Espaço se quebrar a linha
-    marginHorizontal: 10, // Espaço entre os boxes
-    minWidth: 100, // Largura mínima para cada integrante
+    marginBottom: 20, 
+    marginHorizontal: 10, 
+    minWidth: 100, 
   },
   integranteImage: {
-    width: 100, // Tamanho da imagem
-    height: 100, // Tamanho da imagem
-    borderRadius: 50, // Metade da largura/altura para ser redonda
+    width: 100, 
+    height: 100, 
+    borderRadius: 50,
     marginBottom: 10,
     borderWidth: 2,
-    borderColor: radarMotuGreen, // Borda verde na foto
+    borderColor: radarMotuGreen, 
   },
   integranteNome: {
     fontSize: 15,
