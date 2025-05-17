@@ -88,7 +88,7 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente de de
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/ArthurBispo00/RadarMotuExpo](https://github.com/ArthurBispo00/RadarMotuExpo)
+    git clone https://github.com/ArthurBispo00/RadarMotuExpo
     cd RadarMotuExpo 
     ```
 
