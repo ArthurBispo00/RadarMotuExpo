@@ -45,32 +45,32 @@ Protótipo funcional de um aplicativo em React Native com Expo, desenvolvido par
 
 ## 📂 Estrutura do Projeto (Simplificada)
 
+A estrutura principal de pastas e arquivos do projeto é organizada da seguinte forma:
+
+```text
 RadarMotuExpo/
-├── assets/                 # Imagens, logos, fontes, etc.
-│   ├── integrante1.png     # Exemplo de imagem de integrante
-│   ├── integrante2.png     # Exemplo de imagem de integrante
-│   ├── integrante3.png     # Exemplo de imagem de integrante
-│   ├── metamind-logo.png   # Logo usado no Drawer
-│   ├── radarmotu-adaptive-foreground.png  # Logo adaptativa para expo
-│   ├── radarmotu-icon.png  # Ícone principal do app (1024x1024) 
-│   ├── radarmotu-logo.png  # Logo usado no Drawer
-│   └── splash.png          # Tela de splash
-├── screens/                # Componentes de tela
-│   ├── Cadastro.tsx
-│   ├── HomeScreen.tsx
-│   ├── Listagem.tsx
-│   ├── MapaScreen.tsx
-│   ├── PlacaRecognition.tsx
-│   └── SobreNosScreen.tsx
-├── app.json                # Configuração do projeto Expo
-├── App.tsx                
-├── babel.config.js         # Configuração do Babel
-├── package.json            # Dependências e scripts
-├── README.md               # Explicação do Projeto
-└── tsconfig.json           # Configuração do TypeScript
-
-
----
+  assets/
+    integrante1.png                 // Exemplo de imagem de integrante
+    integrante2.png                 // Exemplo de imagem de integrante
+    integrante3.png                 // Exemplo de imagem de integrante
+    metamind-logo.png               // Logo Metamind (usado no Drawer)
+    radarmotu-adaptive-foreground.png // Ícone adaptativo Android (frente)
+    radarmotu-icon.png              // Ícone principal do app (app.json)
+    radarmotu-logo.png              // Logo RadarMotu (usado no Drawer)
+    splash.png                      // Imagem da tela de splash (app.json)
+  screens/
+    Cadastro.tsx
+    HomeScreen.tsx
+    Listagem.tsx
+    MapaScreen.tsx
+    PlacaRecognition.tsx
+    SobreNosScreen.tsx
+  app.json                            // Configuração do projeto Expo
+  App.tsx                             // Componente raiz e configuração da navegação
+  babel.config.js                     // Configuração do Babel
+  package.json                        // Dependências e scripts do projeto
+  README.md                           // Este arquivo de explicação
+  tsconfig.json                       // Configuração do TypeScript
 
 ## 🚀 Como Rodar o Projeto
 
