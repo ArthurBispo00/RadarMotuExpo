@@ -88,10 +88,10 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente de de
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [https://github.com/SEU_USUARIO/NOME_DO_SEU_REPOSITORIO.git](https://github.com/SEU_USUARIO/NOME_DO_SEU_REPOSITORIO.git)
-    cd NOME_DO_SEU_REPOSITORIO 
+    git clone [https://github.com/ArthurBispo00/RadarMotuExpo](https://github.com/ArthurBispo00/RadarMotuExpo)
+    cd RadarMotuExpo 
     ```
-    *(Substitua pela URL do seu repositório)*
+
 
 2.  **Instale as Dependências:**
     ```bash
