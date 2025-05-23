@@ -4,7 +4,7 @@ import React from 'react';
 import { View, Image, Text, StyleSheet } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import {
-    createDrawerNavigator,
+    createDrawerNavigator,  
     DrawerContentScrollView,
     DrawerItemList,
     DrawerNavigationOptions 
